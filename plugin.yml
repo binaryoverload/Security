@@ -1,0 +1,10 @@
+name: Security
+version: 2.0
+main: es.esy.williamoldham.security.Main
+permissions:
+  security.bypass:
+    description: Allows bypassing of the security
+  security.notify:
+    description: Will notify the user upon other players breaking the rule!
+  security.*:
+    description: Gives player permissions to all the commands in this plugin
