@@ -1,7 +1,7 @@
 # Security
 ### A Plugin that makes managing player access to areas easy!
 
-Codacy Code Quality Rating: [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e37cff79f84c4d76bbf6971dc94db160)]
+Codacy Code Quality Rating: ![Codacy Badge](https://api.codacy.com/project/badge/Grade/e37cff79f84c4d76bbf6971dc94db160)
 
 *This plugin will prevent the player from jumping over specific blocks and, with various config options, can be configured to whatever you may need! The default blocks that players are not allowed over are Fences and Iron bars. This was mainly designed for a theme park server for the queues so I do not recommend using this on a survival server as this would impede on the users quite a lot.*
 
