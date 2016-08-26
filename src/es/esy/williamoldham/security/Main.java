@@ -28,6 +28,10 @@ public class Main extends JavaPlugin implements Listener{
 	public void onEnable() {
 
 		saveDefaultConfig();
+		
+		ConfigUpdater cU = new ConfigUpdater(this);
+		
+		cU.updateConfig();
 
 		//getConfig().options().copyDefaults(true);
 		
