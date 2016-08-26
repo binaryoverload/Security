@@ -13,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 
 public class ConfigUpdater {
 	
-	final String configVersion = "1.7";
+	private final String configVersion = "1.7";
 	
 	private Plugin p;
 
@@ -42,7 +42,7 @@ public class ConfigUpdater {
         HashMap<String, Object> var = new HashMap<>();
         YamlConfiguration config = new YamlConfiguration();
         try {
-            config.loadFromString(stringFromInputStream(p.getResource("/config.yml")));
+            config.loadFromString(stringFromInputStream(p.getResource("config.yml")));
         } catch (InvalidConfigurationException e) {}
         for (String key : config.getKeys(false)) {
             var.put(key, config.get(key));
