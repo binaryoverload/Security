@@ -14,6 +14,7 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.inventivetalent.update.spigot.SpigotUpdater;
 
 import es.esy.williamoldham.security.utils.PlayerUtilities;
 import es.esy.williamoldham.security.utils.Utilities;
@@ -29,6 +30,12 @@ public class Main extends JavaPlugin implements Listener{
 		saveDefaultConfig();
 
 		//getConfig().options().copyDefaults(true);
+		
+		try {
+			new SpigotUpdater(this, 28397);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 
 		FileConfiguration config = getConfig();
 
