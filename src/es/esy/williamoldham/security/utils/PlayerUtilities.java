@@ -10,9 +10,9 @@ import org.bukkit.plugin.Plugin;
 
 public class PlayerUtilities {
 	
-	static HashMap<Player, Integer> warnings = new HashMap<Player, Integer>();
+	private static HashMap<Player, Integer> warnings = new HashMap<Player, Integer>();
 	
-	static FileConfiguration config;
+	private static FileConfiguration config;
 	
 	public PlayerUtilities(Plugin p, FileConfiguration config){
 		setup(p);

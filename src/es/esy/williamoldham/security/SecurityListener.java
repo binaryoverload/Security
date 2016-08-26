@@ -18,17 +18,17 @@ import es.esy.williamoldham.security.utils.PlayerUtilities;
 import es.esy.williamoldham.security.utils.Utilities;
 
 public class SecurityListener implements Listener{
-	
+
 	private HashMap<Player, Integer> messageDelays = new HashMap<Player, Integer>();
 
 	private List<Material> blackList;
-	
+
 	private FileConfiguration config;
-	
+
 	public SecurityListener(List<Material> blackList, FileConfiguration config, Plugin p) {
 		this.blackList = blackList;
 		this.config = config;
-		
+
 		int messageDelay = config.getInt("message-delay");
 
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(p, new Runnable() {
@@ -43,7 +43,7 @@ public class SecurityListener implements Listener{
 
 		}, 0, 20 * messageDelay);
 	}
-	
+
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent e){
 		Location fromLoc = e.getFrom();
@@ -54,43 +54,41 @@ public class SecurityListener implements Listener{
 		if (player.hasPermission("security.bypass") || player.hasPermission("security.*") || PlayerUtilities.hasOP(player)) {
 			return;
 		}
-		if (player.getLocation().getBlock().getType() == Material.AIR){
-			if (blackList.contains(toLoc.getBlock().getRelative(BlockFace.DOWN).getType())) {
-				
-				Location moveTo = fromLoc;
-				
-				moveTo.setPitch(toLoc.getPitch());
-				moveTo.setYaw(toLoc.getYaw());
-				moveTo.setDirection(toLoc.getDirection());
-				
-				
-				player.teleport(moveTo);
+		if (player.getLocation().getBlock().getType() == Material.AIR && blackList.contains(toLoc.getBlock().getRelative(BlockFace.DOWN).getType())){				
+			Location moveTo = fromLoc;
+
+			moveTo.setPitch(toLoc.getPitch());
+			moveTo.setYaw(toLoc.getYaw());
+			moveTo.setDirection(toLoc.getDirection());
 
 
-				if(messageDelays.containsKey(player)){
-					if(messageDelays.get(player) == 0){
+			player.teleport(moveTo);
 
-						PlayerUtilities.warn(player);
-						player.sendMessage(Utilities.color(config.getString("prefix") + " " + config.getString("disallow-message")));
 
-						PlayerUtilities.notify(player.getName());
-						PlayerUtilities.log(player.getName(), player.getLocation());
+			if(messageDelays.containsKey(player)){
+				if(messageDelays.get(player) == 0){
 
-						messageDelays.put(player, 1);
-					}
-				} else {
 					PlayerUtilities.warn(player);
-
-					player.sendMessage(Utilities.prefixAndColor(config.getString("disallow-message")));
+					player.sendMessage(Utilities.color(config.getString("prefix") + " " + config.getString("disallow-message")));
 
 					PlayerUtilities.notify(player.getName());
 					PlayerUtilities.log(player.getName(), player.getLocation());
 
 					messageDelays.put(player, 1);
 				}
-				return;
+			} else {
+				PlayerUtilities.warn(player);
+
+				player.sendMessage(Utilities.prefixAndColor(config.getString("disallow-message")));
+
+				PlayerUtilities.notify(player.getName());
+				PlayerUtilities.log(player.getName(), player.getLocation());
+
+				messageDelays.put(player, 1);
 			}
+			return;
+
 		}
 	}
-	
+
 }

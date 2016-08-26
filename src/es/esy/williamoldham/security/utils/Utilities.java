@@ -12,8 +12,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public class Utilities {
 	
-	static File log;
-	static FileConfiguration config;
+	private static File log;
+	private static FileConfiguration config;
 	
 	public Utilities(File log, FileConfiguration config) {
 		Utilities.log = log;

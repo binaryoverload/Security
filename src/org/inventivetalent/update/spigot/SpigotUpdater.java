@@ -55,7 +55,7 @@ public class SpigotUpdater
       yamlConfig.options().header("Configuration for the SpigotUpdate system\nit will inform you about new versions of all plugins which use this updater\n'enabled' specifies whether the system is enabled (affects all plugins)");
       
       yamlConfig.options().copyDefaults(true);
-      yamlConfig.addDefault("enabled", Boolean.valueOf(true));
+      yamlConfig.addDefault("enabled", Boolean.TRUE);
       yamlConfig.save(config);
     }
     try
