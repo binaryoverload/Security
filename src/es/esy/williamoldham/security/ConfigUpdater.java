@@ -11,7 +11,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
-public class ConfigUpdater {
+public class ConfigUpdater{
 	
 	private final String configVersion = "1.7";
 	

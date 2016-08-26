@@ -1,4 +1,4 @@
-package es.esy.williamoldham.security;
+package es.esy.williamoldham.security.listeners;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.bukkit.plugin.Plugin;
 import es.esy.williamoldham.security.utils.PlayerUtilities;
 import es.esy.williamoldham.security.utils.Utilities;
 
-public class SecurityListener implements Listener{
+public class SecurityMoveListener implements Listener{
 
 	private HashMap<Player, Integer> messageDelays = new HashMap<Player, Integer>();
 
@@ -25,7 +25,7 @@ public class SecurityListener implements Listener{
 
 	private FileConfiguration config;
 
-	public SecurityListener(List<Material> blackList, FileConfiguration config, Plugin p) {
+	public SecurityMoveListener(List<Material> blackList, FileConfiguration config, Plugin p) {
 		this.blackList = blackList;
 		this.config = config;
 

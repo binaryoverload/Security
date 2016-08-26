@@ -14,8 +14,9 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.inventivetalent.update.spigot.SpigotUpdater;
 
+import es.esy.williamoldham.security.listeners.SecurityLoginListener;
+import es.esy.williamoldham.security.listeners.SecurityMoveListener;
 import es.esy.williamoldham.security.utils.PlayerUtilities;
 import es.esy.williamoldham.security.utils.Utilities;
 
@@ -24,6 +25,9 @@ public class Main extends JavaPlugin implements Listener{
 	public List<Material> blackList = new ArrayList<Material>();
 
 	public static File log;
+	
+	private Update update;
+	private boolean needsUpdate;
 
 	public void onEnable() {
 
@@ -35,8 +39,14 @@ public class Main extends JavaPlugin implements Listener{
 
 		//getConfig().options().copyDefaults(true);
 		
+		SpigotUpdater su;
+		
 		try {
-			new SpigotUpdater(this, 28397);
+			su = new SpigotUpdater(this, 28397);
+			if(su.needsUpdate()){
+				update = su.getUpdate();
+				needsUpdate = true;
+			}
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
@@ -74,7 +84,12 @@ public class Main extends JavaPlugin implements Listener{
 		@SuppressWarnings("unused")
 		PlayerUtilities pUtils = new PlayerUtilities(this, config);
 		
-		Bukkit.getServer().getPluginManager().registerEvents(new SecurityListener(blackList, config, this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new SecurityMoveListener(blackList, config, this), this);
+		if(needsUpdate){
+			Bukkit.getServer().getPluginManager().registerEvents(new SecurityLoginListener(needsUpdate, update), this);
+		}
 	}
+	
+
 
 }
