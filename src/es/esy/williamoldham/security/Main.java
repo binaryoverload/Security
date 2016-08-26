@@ -22,8 +22,6 @@ public class Main extends JavaPlugin implements Listener{
 
 	public List<Material> blackList = new ArrayList<Material>();
 
-	private FileConfiguration config;
-
 	public static File log;
 
 	public void onEnable() {
@@ -32,7 +30,7 @@ public class Main extends JavaPlugin implements Listener{
 
 		//getConfig().options().copyDefaults(true);
 
-		config = getConfig();
+		FileConfiguration config = getConfig();
 
 		File pluginDir = getDataFolder();
 
