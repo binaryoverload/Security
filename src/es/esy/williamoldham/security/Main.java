@@ -22,7 +22,7 @@ public class Main extends JavaPlugin implements Listener{
 
 	public List<Material> blackList = new ArrayList<Material>();
 
-	FileConfiguration config;
+	private FileConfiguration config;
 
 	public static File log;
 

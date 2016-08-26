@@ -19,11 +19,11 @@ import es.esy.williamoldham.security.utils.Utilities;
 
 public class SecurityListener implements Listener{
 	
-	HashMap<Player, Integer> messageDelays = new HashMap<Player, Integer>();
+	private HashMap<Player, Integer> messageDelays = new HashMap<Player, Integer>();
 
-	List<Material> blackList;
+	private List<Material> blackList;
 	
-	FileConfiguration config;
+	private FileConfiguration config;
 	
 	public SecurityListener(List<Material> blackList, FileConfiguration config, Plugin p) {
 		this.blackList = blackList;
