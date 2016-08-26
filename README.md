@@ -5,9 +5,6 @@ Codacy Code Quality Rating: ![Codacy Badge](https://api.codacy.com/project/badge
 
 *This plugin will prevent the player from jumping over specific blocks and, with various config options, can be configured to whatever you may need! The default blocks that players are not allowed over are Fences and Iron bars. This was mainly designed for a theme park server for the queues so I do not recommend using this on a survival server as this would impede on the users quite a lot.*
 
-**IMPORTANT PLEASE READ!**
-When updating the plugin you have to delete the old config to allow newer config options to be available! This will be fixed in a newer update!
-
 **_It is not recommended to use this on a large server as it could create unnecessary lag because it calls a function every time a player moves! This cannot be fixed at the moment so please do not ask for it although I will try and find a solution for this._**
 
 ###Config File
