@@ -64,7 +64,9 @@ security.* - Gives the user full admin access to the plugin
 
 ###Change Log
 ```
-V1.5
+V1.7
+- Added plugin and config updater
+V1.5 & V1.6
 - Minor plugin improvements
 V1
 - First Ever version of this plugin!
