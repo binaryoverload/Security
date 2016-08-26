@@ -1,5 +1,5 @@
 name: Security
-version: 2.0
+version: 1.6
 main: es.esy.williamoldham.security.Main
 permissions:
   security.bypass:

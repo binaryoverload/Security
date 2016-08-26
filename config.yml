@@ -39,3 +39,5 @@ message-delay: 2
 
 #Whether OPs should be able to bypass the permissions by default
 op-bypass: true
+
+version: 1.7
